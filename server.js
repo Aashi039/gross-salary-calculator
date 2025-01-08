@@ -8,7 +8,6 @@ const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
-// app.use(express.static('public'));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/salaryDB', {
@@ -26,6 +25,11 @@ const employeeSchema = new mongoose.Schema({
 
 // Create Employee Model
 const Employee = mongoose.model('Employee', employeeSchema);
+
+// Serve HTML File Globally
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html')); // Ensure index.html is in the same directory as app.js
+});
 
 // Calculate Gross Salary Endpoint
 app.post('/calculate', async (req, res) => {
