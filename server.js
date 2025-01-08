@@ -8,7 +8,7 @@ const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/salaryDB', {
